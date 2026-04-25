@@ -27,7 +27,8 @@ INSTALL_DIR="$HOME/.jarvis"
 if [ -d "$INSTALL_DIR" ]; then
     echo "🔄 JARVIS is already installed at $INSTALL_DIR. Updating..."
     cd "$INSTALL_DIR"
-    git pull origin main --quiet
+    git fetch origin main --quiet
+    git reset --hard origin/main --quiet
 else
     echo "📥 Downloading JARVIS neural core..."
     git clone --quiet https://github.com/Avikamggh/JARVIS-Shadow-Protocol.git "$INSTALL_DIR"
