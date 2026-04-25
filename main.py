@@ -57,11 +57,12 @@ def main():
         sys.exit(1)
 
     # Check API Key
+    offline_mode = False
     if not GEMINI_API_KEY and not CLAUDE_API_KEY:
-        console.print("\n[bold red]█ NO API KEY █[/bold red]")
-        console.print("[white]Get one at:[/white] [cyan]https://console.anthropic.com/settings/keys[/cyan]")
-        console.print("[white]Then:[/white] [green]export CLAUDE_API_KEY='your-key'[/green]\n")
-        sys.exit(1)
+        console.print("\n[bold yellow]█ RUNNING IN OFFLINE MODE █[/bold yellow]")
+        console.print("[white]No API key detected. Neural link severed.[/white]")
+        console.print("[white]All offline capabilities (Trace, Weather, System, etc.) remain active.\n[/white]")
+        offline_mode = True
 
     # Initialize voice
     voice = JarvisVoice(enabled=VOICE_ENABLED and not args.no_voice, voice_name=args.voice, rate=VOICE_RATE)
@@ -70,18 +71,26 @@ def main():
     boot_sequence()
 
     # Initialize brain
-    try:
-        if CLAUDE_API_KEY:
-            from core.claude_brain import ClaudeBrain
-            brain = ClaudeBrain()
-            print_info("Neural engine: CLAUDE 3 HAIKU")
-        else:
-            from core.brain import JarvisBrain
-            brain = JarvisBrain()
-            print_info("Neural engine: GEMINI 2.0 FLASH")
-    except Exception as e:
-        print_error(f"Brain init failed: {e}")
-        sys.exit(1)
+    if offline_mode:
+        class OfflineBrain:
+            def process(self, text, **kwargs):
+                return "Sir, I am currently operating in full Offline Mode. I do not have a neural link to the primary servers. My local systems, however, are fully operational."
+            def reset(self): pass
+        brain = OfflineBrain()
+        print_info("Neural engine: LOCAL FALLBACK CORE")
+    else:
+        try:
+            if CLAUDE_API_KEY:
+                from core.claude_brain import ClaudeBrain
+                brain = ClaudeBrain()
+                print_info("Neural engine: CLAUDE 3 HAIKU")
+            else:
+                from core.brain import JarvisBrain
+                brain = JarvisBrain()
+                print_info("Neural engine: GEMINI 2.0 FLASH")
+        except Exception as e:
+            print_error(f"Brain init failed: {e}")
+            sys.exit(1)
 
     voice.speak("All systems online. JARVIS at your command, Sir.")
 
