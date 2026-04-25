@@ -34,15 +34,14 @@ JARVIS is pre-loaded with an offline brain capable of advanced tasks without int
 Install JARVIS globally on your Mac with a single command. Open your terminal and paste:
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/JARVIS-Shadow-Protocol.git ~/.jarvis && cd ~/.jarvis && sudo ./install.sh
+curl -sL https://raw.githubusercontent.com/avikamdeol/JARVIS-Shadow-Protocol/main/setup.sh | bash
 ```
 
-*(Note: Replace `YOUR_USERNAME` with your actual GitHub username once deployed).*
-
 ### What the installer does:
-1. Creates a Python virtual environment.
-2. Installs all required dependencies (psutil, wikipedia, etc.).
-3. Binds the `jarvis` command globally to `/usr/local/bin`.
+1. Silently downloads the neural core to `~/.jarvis`
+2. Creates an isolated Python virtual environment.
+3. Installs all required dependencies (psutil, wikipedia, etc.).
+4. Binds the `jarvis` command globally to `/usr/local/bin` using `sudo`.
 
 ---
 
