@@ -6,6 +6,13 @@ echo "Installing JARVIS globally..."
 # Get the absolute path to the jarvis directory
 JARVIS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+echo "Building Python virtual environment..."
+python3 -m venv "$JARVIS_DIR/venv"
+source "$JARVIS_DIR/venv/bin/activate"
+
+echo "Installing neural dependencies..."
+pip install -r "$JARVIS_DIR/requirements.txt" --quiet
+
 # Create the executable wrapper
 cat << 'EOF' > "$JARVIS_DIR/jarvis_cmd"
 #!/bin/bash
