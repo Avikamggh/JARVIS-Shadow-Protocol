@@ -34,7 +34,7 @@ JARVIS is pre-loaded with an offline brain capable of advanced tasks without int
 Install JARVIS globally on your Mac with a single command. Open your terminal and paste:
 
 ```bash
-curl -sL https://raw.githubusercontent.com/avikamdeol/JARVIS-Shadow-Protocol/main/setup.sh | bash
+curl -sL https://raw.githubusercontent.com/Avikamggh/JARVIS-Shadow-Protocol/main/setup.sh | bash
 ```
 
 ### What the installer does:
