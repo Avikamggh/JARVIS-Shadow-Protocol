@@ -6,6 +6,16 @@ echo "Installing JARVIS globally..."
 # Get the absolute path to the jarvis directory
 JARVIS_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+echo "Compiling biometric security modules..."
+swiftc "$JARVIS_DIR/core/auth.swift" -o "$JARVIS_DIR/core/jarvis_auth" 2>/dev/null || echo "Warning: Could not compile biometrics. Skipping..."
+
+echo "Checking system dependencies..."
+if command -v brew &> /dev/null; then
+    brew install portaudio --quiet
+else
+    echo "Homebrew not found. Voice input (PyAudio) might fail to install."
+fi
+
 echo "Building Python virtual environment..."
 python3 -m venv "$JARVIS_DIR/venv"
 source "$JARVIS_DIR/venv/bin/activate"
