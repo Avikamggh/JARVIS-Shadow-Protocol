@@ -1,6 +1,6 @@
 #!/bin/bash
 # JARVIS Remote Installer
-# Usage: curl -sL https://raw.githubusercontent.com/YOUR_USERNAME/JARVIS-Shadow-Protocol/main/setup.sh | bash
+# Usage: curl -sL https://raw.githubusercontent.com/Avikamggh/JARVIS-Shadow-Protocol/main/setup.sh | bash
 
 set -e
 
@@ -30,7 +30,7 @@ if [ -d "$INSTALL_DIR" ]; then
     git pull origin main --quiet
 else
     echo "📥 Downloading JARVIS neural core..."
-    git clone --quiet https://github.com/avikamdeol/JARVIS-Shadow-Protocol.git "$INSTALL_DIR"
+    git clone --quiet https://github.com/Avikamggh/JARVIS-Shadow-Protocol.git "$INSTALL_DIR"
 fi
 
 # 3. Trigger the internal installer
