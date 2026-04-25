@@ -213,7 +213,7 @@ class OfflineProcessor:
             return True, "Self destruct sequence aborted. Just kidding, Sir.", None, None, None
 
         if re.search(r'\b(hack the mainframe|breach firewall|deploy malware|hack someone)\b', text, re.IGNORECASE):
-            import time, random, string
+            import time, string
             from ui.terminal import console
             console.print("[bold green]Establishing secure shell to target...[/bold green]")
             time.sleep(0.5)
@@ -250,7 +250,7 @@ class OfflineProcessor:
             return True, "Locating target via satellite... Triangulating GPS coordinates... Orbital strike drone deployed, Sir.", None, None, None
 
         if re.search(r'\b(matrix mode|simulate matrix|the matrix)\b', text, re.IGNORECASE):
-            import time, random, string
+            import time, string
             from ui.terminal import console
             console.print("\n[bold green]Entering The Matrix...[/bold green]\n")
             time.sleep(1)
