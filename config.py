@@ -9,7 +9,7 @@ from pathlib import Path
 
 # ─── API Configuration ───────────────────────────────────────────────────────
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY", "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")
+CLAUDE_API_KEY = os.environ.get("CLAUDE_API_KEY", "")
 
 # ─── Model Configuration ─────────────────────────────────────────────────────
 GEMINI_MODEL = "gemini-2.0-flash"
